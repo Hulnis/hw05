@@ -25,8 +25,7 @@ defmodule MemoryGame.Game do
       }
     end)
     |> Enum.chunk(1)
-    |> Enum.map(fn card -> {card.key, card} end)
-    |> Map.new
+    |> Map.new(fn card -> {card.key, card} end)
     IO.inspect(cards)
     cards
   end
