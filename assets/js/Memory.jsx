@@ -60,36 +60,40 @@ class MemoryGame extends React.Component {
     } = this.state
     console.log("cards", cards)
     const cardDraw = []
-    for (var i = 0; i < 4; i++) {
-      const row = []
-      for (var j = 0; j < 4; j++) {
-        const card = cards[(i * 4) + j]
-        var color = "white"
-        if (card.state === "solved") {
-          color = "green"
-        } else if (card.state === "revealed") {
-          color = "coral"
+    if(cards == []) {
+      return <div>Waiting on server</div>
+    } else {
+      for (var i = 0; i < 4; i++) {
+        const row = []
+        for (var j = 0; j < 4; j++) {
+          const card = cards[(i * 4) + j]
+          var color = "white"
+          if (card.state === "solved") {
+            color = "green"
+          } else if (card.state === "revealed") {
+            color = "coral"
+          }
+          const styles = {
+            backgroundColor: color
+          }
+          const showText = (card.state === "solved" || card.state === "revealed")
+          row.push(
+            <div style={styles} className="card" onClick={() => this.clickCard(card)} key={card.key}>
+              {showText && card.value}
+            </div>
+          )
         }
-        const styles = {
-          backgroundColor: color
-        }
-        const showText = (card.state === "solved" || card.state === "revealed")
-        row.push(
-          <div style={styles} className="card" onClick={() => this.clickCard(card)} key={card.key}>
-            {showText && card.value}
-          </div>
-        )
+        cardDraw.push(<div className="col" key={"col" + i}>{row}</div>)
       }
-      cardDraw.push(<div className="col" key={"col" + i}>{row}</div>)
-    }
-    return (
-      <div>
-        <div className="row">
-          {cardDraw}
+      return (
+        <div>
+          <div className="row">
+            {cardDraw}
+          </div>
+          <Button onClick={this.restartGame.bind(this)}>Restart Game</Button>
+          <p>{counter}</p>
         </div>
-        <Button onClick={this.restartGame.bind(this)}>Restart Game</Button>
-        <p>{counter}</p>
-      </div>
-    )
+      )
+    }
   }
 }

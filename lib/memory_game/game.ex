@@ -34,6 +34,7 @@ defmodule MemoryGame.Game do
       Map.put(cards, index_key, card2)
       index_key = index_key + 1
     end)
+    IO.inspect(cards)
     cards
   end
 
