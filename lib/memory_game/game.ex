@@ -60,8 +60,6 @@ defmodule MemoryGame.Game do
   def click_card(game, card) do
     if true do
       if card.key === prevCard.key do
-        game.oneClicked = false
-        game.prevCard = nil
         new_card1 = %{
           :value => card.value,
           :state => "solved",
@@ -72,6 +70,8 @@ defmodule MemoryGame.Game do
           :state => "solved",
           :key => prevCard.key
         }
+        Map.put(game, oneClicked, false)
+        Map.put(game, prevCard, nil)
         Map.put(game.cards, card.key, new_card1)
         Map.put(game.cards, prevCard.key, new_card2)
       else
