@@ -42,6 +42,7 @@ class MemoryGame extends React.Component {
 
       setTimeout(function() {
         this.channel.push("update_view")
+          .receive("ok", this.receiveView.bind(this))
       }.bind(this), 1000)
     }
   }
