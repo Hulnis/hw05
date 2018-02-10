@@ -33,7 +33,7 @@ if [ -d ~/www/hw05 ]; then
 fi
 
 mkdir -p ~/www/hw05
-REL_TAR=~/src/hw05/_build/prod/rel/memory_game/releases/0.0.1/hw05.tar.gz
+REL_TAR=~/src/hw05/_build/prod/rel/memory_game/releases/0.0.1/memory_game.tar.gz
 (cd ~/www/hw05 && tar xzvf $REL_TAR)
 
 crontab - <<CRONTAB
