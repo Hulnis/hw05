@@ -1,56 +1,73 @@
 defmodule MemoryGame.Game do
   def new do
+    restart()
+  end
+
+  def restart do
     %{
-      word: next_word(),
-      guesses: [],
+      cards: gen_cards(),
+      oneClicked: false,
+      prevCard: nil,
+      counter: 0,
     }
+  end
+
+  def gen_cards() do
+    values = ["A", "B", "C", "D", "E", "F", "G", "H"]
+    cards = %{}
+    index_key = 0
+    Enum.each(values, fn val ->
+      card1 = %{
+        :value => val,
+        :state => "solved",
+        :key => index_key,
+      }
+      Maps.put(cards, index_key, card1)
+      index_key = index_key + 1
+      card2 = %{
+        :value => val,
+        :state => "solved",
+        :key => index_key,
+      }
+      Maps.put(cards, index_key, card2)
+      index_key = index_key + 1
+    )
+    cards
   end
 
   def client_view(game) do
-    ws = String.graphemes(game.word)
-    gs = game.guesses
     %{
-      skel: skeleton(ws, gs),
-      goods: Enum.filter(gs, &(Enum.member?(ws, &1))),
-      bads: Enum.filter(gs, &(!Enum.member?(ws, &1))),
-      max: max_guesses(),
+      cards: game.cards,
+      counter: game.counter
     }
   end
 
-  def skeleton(word, guesses) do
-    Enum.map word, fn cc ->
-      if Enum.member?(guesses, cc) do
-        cc
+  def hide_two_cards(game, card1, card2) do
+    Process.sleep(1000)
+    Map.update(game.cards, card1.key, &(Map.update(&1, :state, &("hidden"))
+    Map.update(game.cards, card2.key, &(Map.update(&1, :state, &("hidden"))
+  end
+
+  def click_card(game, card) do
+    oneClicked = game.oneClicked
+    prevCard = game.prevCard
+
+    if (oneClicked) do
+      if card.key === prevCard.key do
+        game.oneClicked = false
+        game.prevCard = nil
+        Map.update(game.cards, card.key, &(Map.update(&1, :state, &("solved"))
+        Map.update(game.cards, prevCard.key, &(Map.update(&1, :state, &("solved"))
       else
-        "_"
+        game.oneClicked = false
+        game.prevCard = nil
+        Task.async(fn -> hide_two_cards(game, card1, card2) end)
+        Map.update(game.cards, card.key, &(Map.update(&1, :state, &("revealed"))
       end
+    else
+      game.oneClicked = true
+      game.prevCard = card
+      Map.update(game.cards, card.key, &(Map.update(&1, :state, &("revealed"))
     end
-  end
-
-  def guess(game, letter) do
-    if letter == "z" do
-      raise "That's not a real letter"
-    end
-
-    gs = game.guesses
-    |> MapSet.new()
-    |> MapSet.put(letter)
-    |> MapSet.to_list
-
-    Map.put(game, :guesses, gs)
-  end
-
-  def max_guesses do
-    10
-  end
-
-  def next_word do
-    words = ~w(
-      horse snake jazz violin
-      muffin cookie pizza sandwich
-      house train clock
-      parsnip marshmallow
-    )
-    Enum.random(words)
   end
 end

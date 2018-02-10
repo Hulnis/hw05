@@ -6,12 +6,6 @@ export default function run_memory_game(root) {
   ReactDOM.render(<MemoryGame />, root)
 }
 
-const cardStates = {
-  hidden: "hidden",
-  revealed: "revealed",
-  solved: "solved",
-}
-
 class MemoryGame extends React.Component {
   constructor(props) {
     super(props)
@@ -19,30 +13,10 @@ class MemoryGame extends React.Component {
     // Setup socket and stuff
     this.channel = props.channel
 
-    // const values = ["A", "B", "C", "D", "E", "F", "G", "H"]
-    // const cards = []
-    // for(var i = 0; i < 8; i++) {
-    //   const card1 = {
-    //     value: values[i],
-    //     state: cardStates.hidden,
-    //     weight: Math.random()
-    //   }
-    //   const card2 = {
-    //     value: values[i],
-    //     state: cardStates.hidden,
-    //     weight: Math.random()
-    //   }
-    //   cards.push(card1)
-    //   cards.push(card2)
-    // }
-    // const sortedCards = _.sortBy(cards, (card) => card.weight)
-
     this.state = {
       cards: [],
       counter: 0,
       delayOn: false,
-      oneClicked: false,
-      prevCard: null,
     }
 
     this.channel.join()
@@ -52,7 +26,8 @@ class MemoryGame extends React.Component {
 
   receiveView(view) {
     this.setState({
-      cards: view.cards
+      cards: view.cards,
+      counter: view.counter,
     })
   }
 
@@ -140,15 +115,15 @@ class MemoryGame extends React.Component {
       for (var j = 0; j < 4; j++) {
         const card = cards[(i * 4) + j]
         var color = "white"
-        if (card.state === cardStates.solved) {
+        if (card.state === "solved") {
           color = "green"
-        } else if (card.state === cardStates.revealed) {
+        } else if (card.state === "revealed") {
           color = "coral"
         }
         const styles = {
           backgroundColor: color
         }
-        const showText = (card.state === cardStates.solved || card.state === cardStates.revealed)
+        const showText = (card.state === "solved" || card.state === "revealed")
         row.push(
           <div style={styles} className="card" onClick={() => this.clickCard(card)} key={card.key}>
             {showText && card.value}
