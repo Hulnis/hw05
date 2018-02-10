@@ -97,9 +97,10 @@ defmodule MemoryGame.Game do
         :state => "revealed",
         :key => card.key
       }
-      Map.put(game, oneClicked, true)
-      Map.put(game, prevCard, card)
-      Map.put(game.cards, card.key, new_card)
+      game = game
+      |> Map.put(oneClicked, true)
+      |> Map.put(prevCard, card)
+      |> Map.put(card, Map.put(game.cards, card.key, new_card)
     end
     IO.puts("game2")
     IO.inspect(game)
