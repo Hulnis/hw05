@@ -40,7 +40,7 @@ defmodule MemoryGame.Game do
     }
   end
 
-  def hide_two_cards(game) do
+  def reset_two(game) do
     card1 = game.clickedCard1
     card2 = game.clickedCard2
     new_card1 = %{
@@ -122,7 +122,7 @@ defmodule MemoryGame.Game do
     end
     IO.puts("game2")
     IO.inspect(game)
-    
+
     counter1 = game.counter + 1
     Map.put(game, :counter, counter1)
   end
