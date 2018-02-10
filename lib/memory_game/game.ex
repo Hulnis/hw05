@@ -31,8 +31,7 @@ defmodule MemoryGame.Game do
     IO.puts("cards2")
     IO.inspect(cards)
     cards = cards
-    |> Enum.map(fn card -> {card[:key], card} end)
-    |> Map.new
+    |> Map.new(fn card -> {card[:key], card} end)
     IO.puts("cards3")
     IO.inspect(cards)
     cards
