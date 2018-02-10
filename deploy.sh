@@ -11,8 +11,8 @@ if [ $PWD != $GIT_PATH ]; then
 	exit 1
 fi
 
-if [ $USER != "memory" ]; then
-	echo "Error: must run as user 'memory'"
+if [ $USER != "hw05" ]; then
+	echo "Error: must run as user 'hw05'"
 	echo "  Current user is $USER"
 	exit 2
 fi
@@ -33,7 +33,7 @@ if [ -d ~/www/hw05 ]; then
 fi
 
 mkdir -p ~/www/hw05
-REL_TAR=~/src/hw05/_build/prod/rel/memory/releases/0.0.1/hw05.tar.gz
+REL_TAR=~/src/hw05/_build/prod/rel/hw05/releases/0.0.1/hw05.tar.gz
 (cd ~/www/hw05 && tar xzvf $REL_TAR)
 
 crontab - <<CRONTAB
