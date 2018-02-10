@@ -34,7 +34,7 @@ fi
 
 mkdir -p ~/www/hw05
 REL_TAR=~/src/hw05/_build/prod/rel/memory_game/releases/0.0.1/memory_game.tar.gz
-(cd ~/www/memory_game && tar xzvf $REL_TAR)
+(cd ~/www/hw05 && tar xzvf $REL_TAR)
 
 crontab - <<CRONTAB
 @reboot bash /home/hw05/src/hw05/start.sh
