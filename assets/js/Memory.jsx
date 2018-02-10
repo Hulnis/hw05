@@ -25,6 +25,7 @@ class MemoryGame extends React.Component {
   }
 
   receiveView(view) {
+    console.log("view", view)
     this.setState({
       cards: view.cards,
       counter: view.counter,
@@ -45,58 +46,6 @@ class MemoryGame extends React.Component {
         })
       }.bind(this), 1000)
     }
-    // const {
-    //   cards,
-    //   counter,
-    //   delayOn,
-    //   oneClicked,
-    //   prevCard,
-    // } = this.state
-    // if (!delayOn) {
-    //   this.setState({
-    //     counter: counter + 1,
-    //   })
-    //   if (oneClicked) {
-    //     if (clickedCard.value === prevCard.value) {
-    //       const newCards = []
-    //       cards.forEach(function(card) {
-    //         if (card.value == clickedCard.value) {
-    //           newCards.push({
-    //             state: cardStates.solved,
-    //             value: card.value,
-    //             weight: card.weight,
-    //           })
-    //         } else {
-    //           newCards.push(Object.assign({}, card))
-    //         }
-    //       })
-    //       this.setState({
-    //         cards: newCards,
-    //         prevCard: null,
-    //         oneClicked: false,
-    //       })
-    //     } else {
-    //       this.setState({
-    //         cards: this.revealCard(clickedCard),
-    //         delayOn: true,
-    //         oneClicked: false,
-    //         prevCard: null,
-    //       })
-    //       setTimeout(function() {
-    //         this.setState({
-    //           cards: this.hideNonSuccessCard(),
-    //           delayOn: false,
-    //         })
-    //       }.bind(this), 1000)
-    //     }
-    //   } else {
-    //     this.setState({
-    //       cards: this.revealCard(clickedCard),
-    //       oneClicked: true,
-    //       prevCard: clickedCard
-    //     })
-    //   }
-    // }
   }
 
   restartGame() {
@@ -109,6 +58,7 @@ class MemoryGame extends React.Component {
       cards,
       counter,
     } = this.state
+    console.log("cards", cards)
     const cardDraw = []
     for (var i = 0; i < 4; i++) {
       const row = []
