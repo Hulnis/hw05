@@ -58,6 +58,7 @@ defmodule MemoryGame.Game do
     |> Map.put(card2.key, new_card2)
 
     Map.put(game, :cards, gameCards)
+    |> Map.put(:delay, false)
   end
 
   def click_card(game, cardKey) do
