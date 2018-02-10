@@ -58,7 +58,7 @@ defmodule MemoryGame.Game do
   end
 
   def click_card(game, card) do
-    if game.oneClicked === true do
+    if true do
       if card.key === prevCard.key do
         game.oneClicked = false
         game.prevCard = nil
