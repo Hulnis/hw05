@@ -44,8 +44,8 @@ defmodule MemoryGame.Game do
 
   def hide_two_cards(game, card1, card2) do
     Process.sleep(1000)
-    Map.update(game.cards, card1.key, &(Map.update(&1, :state, &("hidden")))
-    Map.update(game.cards, card2.key, &(Map.update(&1, :state, &("hidden")))
+    Map.update(game.cards, card1.key, &(Map.update(&1, :state, &("hidden"))))
+    Map.update(game.cards, card2.key, &(Map.update(&1, :state, &("hidden"))))
   end
 
   def click_card(game, card) do
@@ -56,18 +56,18 @@ defmodule MemoryGame.Game do
       if card.key === prevCard.key do
         game.oneClicked = false
         game.prevCard = nil
-        Map.update(game.cards, card.key, &(Map.update(&1, :state, &("solved")))
-        Map.update(game.cards, prevCard.key, &(Map.update(&1, :state, &("solved")))
+        Map.update(game.cards, card.key, &(Map.update(&1, :state, &("solved"))))
+        Map.update(game.cards, prevCard.key, &(Map.update(&1, :state, &("solved"))))
       else
         game.oneClicked = false
         game.prevCard = nil
         Task.async(fn -> hide_two_cards(game, card1, card2) end)
-        Map.update(game.cards, card.key, &(Map.update(&1, :state, &("revealed")))
+        Map.update(game.cards, card.key, &(Map.update(&1, :state, &("revealed"))))
       end
     else
       game.oneClicked = true
       game.prevCard = card
-      Map.update(game.cards, card.key, &(Map.update(&1, :state, &("revealed")))
+      Map.update(game.cards, card.key, &(Map.update(&1, :state, &("revealed"))))
     end
   end
 end
