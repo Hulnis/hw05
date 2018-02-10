@@ -2,7 +2,7 @@
 
 export PORT=5100
 export MIX_ENV=prod
-export GIT_PATH=/home/hw05/src/hw05
+export GIT_PATH=/home/memory_game/src/memory_game
 
 PWD=`pwd`
 if [ $PWD != $GIT_PATH ]; then
@@ -11,8 +11,8 @@ if [ $PWD != $GIT_PATH ]; then
 	exit 1
 fi
 
-if [ $USER != "hw05" ]; then
-	echo "Error: must run as user 'hw05'"
+if [ $USER != "memory_game" ]; then
+	echo "Error: must run as user 'memory_game'"
 	echo "  Current user is $USER"
 	exit 2
 fi
@@ -27,17 +27,17 @@ mkdir -p ~/www
 mkdir -p ~/old
 
 NOW=`date +%s`
-if [ -d ~/www/hw05 ]; then
-	echo mv ~/www/hw05 ~/old/$NOW
-	mv ~/www/hw05 ~/old/$NOW
+if [ -d ~/www/memory_game ]; then
+	echo mv ~/www/memory_game ~/old/$NOW
+	mv ~/www/memory_game ~/old/$NOW
 fi
 
-mkdir -p ~/www/hw05
-REL_TAR=~/src/hw05/_build/prod/rel/memory_game/releases/0.0.1/memory_game.tar.gz
-(cd ~/www/hw05 && tar xzvf $REL_TAR)
+mkdir -p ~/www/memory_game
+REL_TAR=~/src/memory_game/_build/prod/rel/memory_game/releases/0.0.1/memory_game.tar.gz
+(cd ~/www/memory_game && tar xzvf $REL_TAR)
 
 crontab - <<CRONTAB
-@reboot bash /home/hw05/src/hw05/start.sh
+@reboot bash /home/memory_game/src/memory_game/start.sh
 CRONTAB
 
 #. start.sh
