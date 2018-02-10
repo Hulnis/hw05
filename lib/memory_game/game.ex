@@ -24,6 +24,9 @@ defmodule MemoryGame.Game do
         :key => index,
       }
     end)
+    IO.puts("cards")
+    IO.inspect(cards)
+    cards = cards
     |> Enum.chunk(1)
     |> Enum.map(fn card -> {card[:key], card} end)
     |> Map.new
