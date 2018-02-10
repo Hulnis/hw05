@@ -68,46 +68,50 @@ defmodule MemoryGame.Game do
     IO.puts("game1")
     IO.inspect(game)
     game = if oneClicked do
-      if card.value === clickedCard1.value && card.key !== clickedCard1.key do
-        new_card1 = %{
-          :value => card.value,
-          :state => "solved",
-          :key => card.key
-        }
-        new_card2 = %{
-          :value => clickedCard1.value,
-          :state => "solved",
-          :key => clickedCard1.key
-        }
-        game1 = game
-        |> Map.put(:oneClicked, false)
-        |> Map.put(:clickedCard1, nil)
-
-        gameCards1 = game.cards
-        |> Map.put(card.key, new_card1)
-        |> Map.put(clickedCard1.key, new_card2)
-
-        Map.put(game1, :cards, gameCards1)
+      if card.key === clickedCard1.key do
+        game
       else
-        new_card = %{
-          :value => card.value,
-          :state => "revealed",
-          :key => card.key
-        }
-        Map.put(game, :oneClicked, false)
-        Map.put(game, :clickedCard1, nil)
-        Map.put(game.cards, card.key, new_card)
+        if card.value === clickedCard1.value do
+          new_card1 = %{
+            :value => card.value,
+            :state => "solved",
+            :key => card.key
+          }
+          new_card2 = %{
+            :value => clickedCard1.value,
+            :state => "solved",
+            :key => clickedCard1.key
+          }
+          game1 = game
+          |> Map.put(:oneClicked, false)
+          |> Map.put(:clickedCard1, nil)
 
-        game1 = game
-        |> Map.put(:oneClicked, false)
-        |> Map.put(:clickedCard1, card)
-        |> Map.put(:clickedCard2, clickedCard1)
-        |> Map.put(:delay, true)
+          gameCards1 = game.cards
+          |> Map.put(card.key, new_card1)
+          |> Map.put(clickedCard1.key, new_card2)
 
-        gameCards1 = game.cards
-        |> Map.put(card.key, new_card)
+          Map.put(game1, :cards, gameCards1)
+        else
+          new_card = %{
+            :value => card.value,
+            :state => "revealed",
+            :key => card.key
+          }
+          Map.put(game, :oneClicked, false)
+          Map.put(game, :clickedCard1, nil)
+          Map.put(game.cards, card.key, new_card)
 
-        Map.put(game1, :cards, gameCards1)
+          game1 = game
+          |> Map.put(:oneClicked, false)
+          |> Map.put(:clickedCard1, card)
+          |> Map.put(:clickedCard2, clickedCard1)
+          |> Map.put(:delay, true)
+
+          gameCards1 = game.cards
+          |> Map.put(card.key, new_card)
+
+          Map.put(game1, :cards, gameCards1)
+        end
       end
     else
       IO.puts("else case")
