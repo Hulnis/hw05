@@ -17,7 +17,7 @@ defmodule MemoryGame.Game do
   def gen_cards() do
     values = Enum.shuffle(["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F", "G", "G", "H", "H"])
     cards = Stream.with_index(values, 1)
-    |> Enum.map(values, fn {val, index} ->
+    |> Enum.map(fn {val, index} ->
       %{
         :value => val,
         :state => "solved",
@@ -25,7 +25,8 @@ defmodule MemoryGame.Game do
       }
     end)
     |> Enum.chunk(1)
-    |> Map.new(fn card -> {card.key, card} end)
+    |> Enum.map(fn card -> {card.key, card} end)
+    |> Map.new
     IO.inspect(cards)
     cards
   end
