@@ -75,24 +75,24 @@ defmodule MemoryGame.Game do
         Map.put(game.cards, card.key, new_card1)
         Map.put(game.cards, prevCard.key, new_card2)
       else
-        game.oneClicked = false
-        game.prevCard = nil
         Task.async(fn -> hide_two_cards(game, card1, card2) end)
         new_card = %{
           :value => card.value,
           :state => "revealed",
           :key => card.key
         }
+        Map.put(game, oneClicked, false)
+        Map.put(game, prevCard, nil)
         Map.put(game.cards, card.key, new_card)
       end
     else
-      game.oneClicked = true
-      game.prevCard = card
       new_card = %{
         :value => card.value,
         :state => "revealed",
         :key => card.key
       }
+      Map.put(game, oneClicked, true)
+      Map.put(game, prevCard, card)
       Map.put(game.cards, card.key, new_card)
     end
   end
