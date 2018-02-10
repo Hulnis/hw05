@@ -76,14 +76,14 @@ defmodule MemoryGame.Game do
           :key => prevCard.key
         }
         game1 = game
-        |> Map.put(oneClicked, false)
-        |> Map.put(prevCard, nil)
+        |> Map.put(:oneClicked, false)
+        |> Map.put(:prevCard, nil)
 
         gameCards1 = game.cards
         |> Map.put(card.key, new_card1)
         |> Map.put(prevCard.key, new_card2)
 
-        Map.put(game1, cards, gameCards1)
+        Map.put(game1, :cards, gameCards1)
       else
         Task.async(fn -> hide_two_cards(game, card, prevCard) end)
         new_card = %{
@@ -91,18 +91,18 @@ defmodule MemoryGame.Game do
           :state => "revealed",
           :key => card.key
         }
-        Map.put(game, oneClicked, false)
-        Map.put(game, prevCard, nil)
+        Map.put(game, :oneClicked, false)
+        Map.put(game, :prevCard, nil)
         Map.put(game.cards, card.key, new_card)
 
         game1 = game
-        |> Map.put(oneClicked, false)
-        |> Map.put(prevCard, nil)
+        |> Map.put(:oneClicked, false)
+        |> Map.put(:prevCard, nil)
 
         gameCards1 = game.cards
         |> Map.put(card.key, new_card)
 
-        Map.put(game1, cards, gameCards1)
+        Map.put(game1, :cards, gameCards1)
       end
     else
       IO.puts("else case")
@@ -112,9 +112,9 @@ defmodule MemoryGame.Game do
         :key => card.key
       }
       game
-      |> Map.put(oneClicked, true)
-      |> Map.put(prevCard, card)
-      |> Map.put(cards, Map.put(game.cards, card.key, new_card))
+      |> Map.put(:oneClicked, true)
+      |> Map.put(:prevCard, card)
+      |> Map.put(:cards, Map.put(game.cards, card.key, new_card))
     end
     IO.puts("game2")
     IO.inspect(game)
