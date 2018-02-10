@@ -25,6 +25,7 @@ import run_memory_game from "./Memory";
 function start() {
   let root = document.getElementById('root');
   if (root) {
+    console.log("socket connecting")
     let channel = socket.channel("games:" + window.gameName, {});
     run_memory_game(root, channel);
   }
