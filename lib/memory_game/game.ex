@@ -32,7 +32,7 @@ defmodule MemoryGame.Game do
 
   def client_view(game) do
     %{
-      cards: Keyword.values(game.cards),
+      cards: Map.values(game.cards),
       counter: game.counter
     }
   end
