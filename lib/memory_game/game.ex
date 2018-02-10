@@ -58,6 +58,8 @@ defmodule MemoryGame.Game do
   end
 
   def click_card(game, card) do
+    prevCard = game.prevCard
+    oneClicked = game.oneClicked
     if true do
       if card.key === prevCard.key do
         new_card1 = %{
