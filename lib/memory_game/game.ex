@@ -57,6 +57,8 @@ defmodule MemoryGame.Game do
     prevCard = game.prevCard
     oneClicked = game.oneClicked
     card = game.cards[cardKey]
+    IO.puts("game1")
+    IO.inspect(game)
     IO.puts("card")
     IO.inspect(card)
     IO.puts("prevCard")
@@ -99,4 +101,6 @@ defmodule MemoryGame.Game do
       Map.put(game.cards, card.key, new_card)
     end
   end
+  IO.puts("game1")
+  IO.inspect(game)
 end
