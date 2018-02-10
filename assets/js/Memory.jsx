@@ -27,8 +27,8 @@ class MemoryGame extends React.Component {
   receiveView(view) {
     console.log("view", view)
     this.setState({
-      cards: view.cards,
-      counter: view.counter,
+      cards: view.game.cards,
+      counter: view.game.counter,
     })
   }
 

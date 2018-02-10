@@ -1,7 +1,6 @@
 defmodule MemoryGame.Game do
 
   def new do
-    IO.puts("new")
     restart()
   end
 
@@ -24,22 +23,16 @@ defmodule MemoryGame.Game do
         :key => index,
       }
     end)
-    IO.puts("cards1")
-    IO.inspect(cards)
     cards = cards
     |> Enum.chunk(1)
-    IO.puts("cards2")
-    IO.inspect(cards)
     cards = cards
     |> Map.new(fn card -> {elem(Map.fetch(Enum.at(card, 0), :key), 1), Enum.at(card, 0)} end)
-    IO.puts("cards3")
-    IO.inspect(cards)
     cards
   end
 
   def client_view(game) do
     %{
-      cards: game.cards,
+      cards: Keyword.values(game.cards),
       counter: game.counter
     }
   end
