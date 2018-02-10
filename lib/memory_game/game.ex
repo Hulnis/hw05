@@ -100,7 +100,7 @@ defmodule MemoryGame.Game do
       Map.put(game, prevCard, card)
       Map.put(game.cards, card.key, new_card)
     end
+    IO.puts("game2")
+    IO.inspect(game)
   end
-  IO.puts("game2")
-  IO.inspect(game)
 end
