@@ -2,7 +2,7 @@
 
 export PORT=5101
 export MIX_ENV=prod
-export GIT_PATH=/home/vagrant/webdev/hw05
+export GIT_PATH=/home/hw05/webdev/hw05
 
 PWD=`pwd`
 if [ $PWD != $GIT_PATH ]; then
