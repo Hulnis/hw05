@@ -59,10 +59,10 @@ defmodule MemoryGame.Game do
   end
 
   def click_card(game, card) do
-    oneClicked = game[:oneClicked]
+    oneClicked = Map.fetch(game, :oneClicked)
     prevCard = game[:prevCard]
-
-    if game[:oneClicked] do
+    IO.inspect(oneClicked)
+    if oneClicked do
       if card.key === prevCard.key do
         game.oneClicked = false
         game.prevCard = nil
