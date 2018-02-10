@@ -7,8 +7,10 @@ defmodule MemoryGame.Game do
   def restart do
     %{
       cards: gen_cards(),
+      delay: false,
       oneClicked: false,
-      prevCard: nil,
+      clickedCard1: nil,
+      clickedCard2: nil,
       counter: 0,
     }
   end
@@ -33,12 +35,14 @@ defmodule MemoryGame.Game do
   def client_view(game) do
     %{
       cards: Map.values(game.cards),
-      counter: game.counter
+      counter: game.counter,
+      delay: game.delay,
     }
   end
 
-  def hide_two_cards(game, card1, card2) do
-    Process.sleep(500)
+  def hide_two_cards(game) do
+    card1 = game.clickedCard1
+    card2 = game.clickedCard2
     new_card1 = %{
       :value => card1.value,
       :state => "hidden",
@@ -49,55 +53,55 @@ defmodule MemoryGame.Game do
       :state => "hidden",
       :key => card2.key
     }
+    gameCards =
     Map.put(game.cards, card1.key, new_card1)
-    Map.put(game.cards, card2.key, new_card2)
+    |> Map.put(card2.key, new_card2)
+
+    Map.put(game, :cards, gameCards)
   end
 
   def click_card(game, cardKey) do
-    prevCard = game.prevCard
+    clickedCard1 = game.clickedCard1
     oneClicked = game.oneClicked
     card = game.cards[cardKey]
     IO.puts("game1")
     IO.inspect(game)
-    IO.puts("card")
-    IO.inspect(card)
-    IO.puts("prevCard")
-    IO.inspect(prevCard)
     game = if oneClicked do
-      if card.key === prevCard.key do
+      if card.key === clickedCard1.key do
         new_card1 = %{
           :value => card.value,
           :state => "solved",
           :key => card.key
         }
         new_card2 = %{
-          :value => prevCard.value,
+          :value => clickedCard1.value,
           :state => "solved",
-          :key => prevCard.key
+          :key => clickedCard1.key
         }
         game1 = game
         |> Map.put(:oneClicked, false)
-        |> Map.put(:prevCard, nil)
+        |> Map.put(:clickedCard1, nil)
 
         gameCards1 = game.cards
         |> Map.put(card.key, new_card1)
-        |> Map.put(prevCard.key, new_card2)
+        |> Map.put(clickedCard1.key, new_card2)
 
         Map.put(game1, :cards, gameCards1)
       else
-        Task.async(fn -> hide_two_cards(game, card, prevCard) end)
         new_card = %{
           :value => card.value,
           :state => "revealed",
           :key => card.key
         }
         Map.put(game, :oneClicked, false)
-        Map.put(game, :prevCard, nil)
+        Map.put(game, :clickedCard1, nil)
         Map.put(game.cards, card.key, new_card)
 
         game1 = game
         |> Map.put(:oneClicked, false)
-        |> Map.put(:prevCard, nil)
+        |> Map.put(:clickedCard1, card)
+        |> Map.put(:clickedCard2, clickedCard1)
+        |> Map.put(:delay, true)
 
         gameCards1 = game.cards
         |> Map.put(card.key, new_card)
@@ -113,10 +117,13 @@ defmodule MemoryGame.Game do
       }
       game
       |> Map.put(:oneClicked, true)
-      |> Map.put(:prevCard, card)
+      |> Map.put(:clickedCard1, card)
       |> Map.put(:cards, Map.put(game.cards, card.key, new_card))
     end
     IO.puts("game2")
     IO.inspect(game)
+    
+    counter1 = game.counter + 1
+    Map.put(game, :counter, counter1)
   end
 end

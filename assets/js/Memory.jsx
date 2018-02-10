@@ -26,9 +26,16 @@ class MemoryGame extends React.Component {
 
   receiveView(view) {
     console.log("view", view)
+    if(view.game.delay) {
+      setTimeout(function() {
+        this.channel.push("reset_two")
+          .receive("ok", this.receiveView.bind(this))
+      }.bind(this), 1000)
+    }
     this.setState({
       cards: view.game.cards,
       counter: view.game.counter,
+      delayOn: view.game.delay,
     })
   }
 
@@ -39,11 +46,6 @@ class MemoryGame extends React.Component {
     if(!delayOn) {
       this.channel.push("click", { cardKey: clickedCard.key})
         .receive("ok", this.receiveView.bind(this))
-
-      setTimeout(function() {
-        this.channel.push("update_view")
-          .receive("ok", this.receiveView.bind(this))
-      }.bind(this), 1000)
     }
   }
 
