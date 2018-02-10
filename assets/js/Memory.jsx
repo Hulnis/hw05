@@ -37,7 +37,7 @@ class MemoryGame extends React.Component {
       delayOn,
     } = this.state
     if(!delayOn) {
-      this.channel.push("click", { card: clickedCard.key})
+      this.channel.push("click", { cardKey: clickedCard.key})
         .receive("ok", this.receiveView.bind(this))
 
       setTimeout(function() {
