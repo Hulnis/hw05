@@ -60,7 +60,7 @@ class MemoryGame extends React.Component {
     } = this.state
     console.log("cards", cards)
     const cardDraw = []
-    if(cards == []) {
+    if(cards.length === 0) {
       return <div>Waiting on server</div>
     } else {
       for (var i = 0; i < 4; i++) {
