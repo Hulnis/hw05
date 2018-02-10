@@ -38,7 +38,7 @@ defmodule MemoryGame.Game do
   end
 
   def hide_two_cards(game, card1, card2) do
-    Process.sleep(1000)
+    Process.sleep(500)
     new_card1 = %{
       :value => card1.value,
       :state => "hidden",
