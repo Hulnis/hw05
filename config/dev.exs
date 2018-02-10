@@ -31,7 +31,7 @@ config :memory_game, MemoryGameWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :hangman, MemoryGameWeb.Endpoint,
+config :memory_game, MemoryGameWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},

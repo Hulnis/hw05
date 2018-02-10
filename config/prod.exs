@@ -26,7 +26,7 @@ config :logger, level: :info
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
 #
-#     config :hangman, MemoryGameWeb.Endpoint,
+#     config :memory_game, MemoryGameWeb.Endpoint,
 #       ...
 #       url: [host: "example.com", port: 443],
 #       https: [:inet6,
@@ -41,7 +41,7 @@ config :logger, level: :info
 # We also recommend setting `force_ssl`, ensuring no data is
 # ever sent via http, always redirecting to https:
 #
-#     config :hangman, MemoryGameWeb.Endpoint,
+#     config :memory_game, MemoryGameWeb.Endpoint,
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
@@ -56,7 +56,7 @@ config :logger, level: :info
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
-#     config :hangman, MemoryGameWeb.Endpoint, server: true
+#     config :memory_game, MemoryGameWeb.Endpoint, server: true
 #
 
 # Finally import the config/prod.secret.exs

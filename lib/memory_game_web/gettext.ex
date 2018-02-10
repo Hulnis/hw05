@@ -20,5 +20,5 @@ defmodule MemoryGameWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :hangman
+  use Gettext, otp_app: :memory_game
 end

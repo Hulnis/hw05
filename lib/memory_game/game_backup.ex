@@ -1,4 +1,4 @@
-defmodule Hangman.GameBackup do
+defmodule MemoryGame.GameBackup do
   use Agent
 
   def start_link do

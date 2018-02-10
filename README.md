@@ -1,4 +1,4 @@
-# Hangman
+# MemoryGame
 
 To start your Phoenix server:
 

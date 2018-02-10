@@ -28,7 +28,7 @@ defmodule MemoryGameWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/hangman_web/templates",
+      use Phoenix.View, root: "lib/memory_game_web/templates",
                         namespace: MemoryGameWeb
 
       # Import convenience functions from controllers
