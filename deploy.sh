@@ -1,11 +1,8 @@
 #!/bin/bash
 
-echo "in class, we're typing the commands"
-exit 3
-
-export PORT=5100
+export PORT=5101
 export MIX_ENV=prod
-export GIT_PATH=/home/memory/src/memory
+export GIT_PATH=/home/vagrant/webdev/hw05
 
 PWD=`pwd`
 if [ $PWD != $GIT_PATH ]; then
@@ -30,17 +27,17 @@ mkdir -p ~/www
 mkdir -p ~/old
 
 NOW=`date +%s`
-if [ -d ~/www/memory ]; then
-	echo mv ~/www/memory ~/old/$NOW
-	mv ~/www/memory ~/old/$NOW
+if [ -d ~/www/hw05 ]; then
+	echo mv ~/www/hw05 ~/old/$NOW
+	mv ~/www/hw05 ~/old/$NOW
 fi
 
-mkdir -p ~/www/memory
-REL_TAR=~/src/memory/_build/prod/rel/memory/releases/0.0.1/memory.tar.gz
-(cd ~/www/memory && tar xzvf $REL_TAR)
+mkdir -p ~/www/hw05
+REL_TAR=~/src/hw05/_build/prod/rel/memory/releases/0.0.1/hw05.tar.gz
+(cd ~/www/hw05 && tar xzvf $REL_TAR)
 
 crontab - <<CRONTAB
-@reboot bash /home/memory/src/memory/start.sh
+@reboot bash /home/hw05/src/hw05/start.sh
 CRONTAB
 
 #. start.sh
