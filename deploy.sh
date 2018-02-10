@@ -5,7 +5,7 @@ exit 3
 
 export PORT=5100
 export MIX_ENV=prod
-export GIT_PATH=/home/memory/src/memory 
+export GIT_PATH=/home/memory/src/memory
 
 PWD=`pwd`
 if [ $PWD != $GIT_PATH ]; then

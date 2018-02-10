@@ -1,4 +1,4 @@
-defmodule Memory.Game do
+defmodule MemoryGame.Game do
   def new do
     %{
       word: next_word(),
