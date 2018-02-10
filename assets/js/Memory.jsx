@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button } from 'reactstrap'
 
-export default function run_memory_game(root) {
-  ReactDOM.render(<MemoryGame />, root)
+export default function run_memory_game(root, channel) {
+  ReactDOM.render(<MemoryGame channel={channel}/>, root)
 }
 
 class MemoryGame extends React.Component {

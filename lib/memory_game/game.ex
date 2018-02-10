@@ -1,6 +1,7 @@
 defmodule MemoryGame.Game do
 
   def new do
+    IO.puts("new")
     restart()
   end
 
@@ -23,14 +24,14 @@ defmodule MemoryGame.Game do
         :state => "solved",
         :key => index_key,
       }
-      Maps.put(cards, index_key, card1)
+      Map.put(cards, index_key, card1)
       index_key = index_key + 1
       card2 = %{
         :value => val,
         :state => "solved",
         :key => index_key,
       }
-      Maps.put(cards, index_key, card2)
+      Map.put(cards, index_key, card2)
       index_key = index_key + 1
     end)
     cards
