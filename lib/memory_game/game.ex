@@ -54,10 +54,6 @@ defmodule MemoryGame.Game do
   end
 
   def click_card(game, card) do
-    IO.inspect(game)
-  end
-
-  def click_card(game, card) do
     prevCard = game.prevCard
     oneClicked = game.oneClicked
     if true do
