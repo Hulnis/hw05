@@ -31,7 +31,7 @@ defmodule MemoryGame.Game do
       }
       Maps.put(cards, index_key, card2)
       index_key = index_key + 1
-    )
+    end)
     cards
   end
 
