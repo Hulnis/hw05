@@ -2,7 +2,7 @@
 
 export PORT=5100
 export MIX_ENV=prod
-export GIT_PATH=/home/memory_game/src/hw05
+export GIT_PATH=/home/hw05/src/hw05
 
 PWD=`pwd`
 if [ $PWD != $GIT_PATH ]; then
