@@ -24,12 +24,16 @@ defmodule MemoryGame.Game do
         :key => index,
       }
     end)
-    IO.puts("cards")
+    IO.puts("cards1")
     IO.inspect(cards)
     cards = cards
     |> Enum.chunk(1)
+    IO.puts("cards2")
+    IO.inspect(cards)
+    cards = cards
     |> Enum.map(fn card -> {card[:key], card} end)
     |> Map.new
+    IO.puts("cards3")
     IO.inspect(cards)
     cards
   end
