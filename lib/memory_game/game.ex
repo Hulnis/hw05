@@ -31,7 +31,7 @@ defmodule MemoryGame.Game do
     IO.puts("cards2")
     IO.inspect(cards)
     cards = cards
-    |> Map.new(fn card -> {Map.fetch(Enum.at(card, 0)), :key), Enum.at(card, 0)} end)
+    |> Map.new(fn card -> {Map.fetch(Enum.at(card, 0), :key), Enum.at(card, 0)} end)
     IO.puts("cards3")
     IO.inspect(cards)
     cards
