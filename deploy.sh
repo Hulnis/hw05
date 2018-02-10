@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PORT=5101
+export PORT=5100
 export MIX_ENV=prod
 export GIT_PATH=/home/hw05/src/hw05
 
