@@ -60,7 +60,7 @@ defmodule MemoryGame.Game do
     IO.inspect(card)
     IO.puts("prevCard")
     IO.inspect(prevCard)
-    if true do
+    if oneClicked do
       if card.key === prevCard.key do
         new_card1 = %{
           :value => card.value,
