@@ -91,6 +91,7 @@ defmodule MemoryGame.Game do
         Map.put(game.cards, card.key, new_card)
       end
     else
+      IO.puts("else case")
       new_card = %{
         :value => card.value,
         :state => "revealed",
