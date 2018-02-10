@@ -20,13 +20,13 @@ import "phoenix_html";
 
 import socket from "./socket";
 
-import game_init from "./hangman";
+import run_memory_game from "./Memory";
 
 function start() {
   let root = document.getElementById('root');
   if (root) {
     let channel = socket.channel("games:" + window.gameName, {});
-    game_init(root, channel);
+    run_memory_game(root, channel);
   }
 
   if (document.getElementById('index-page')) {

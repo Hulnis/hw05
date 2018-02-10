@@ -1,5 +1,5 @@
-defmodule HangmanWeb.PageControllerTest do
-  use HangmanWeb.ConnCase
+defmodule MemoryGameWeb.PageControllerTest do
+  use MemoryGameWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"

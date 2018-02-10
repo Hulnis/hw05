@@ -1,4 +1,4 @@
-defmodule Hangman.Game do
+defmodule Memory.Game do
   def new do
     %{
       word: next_word(),

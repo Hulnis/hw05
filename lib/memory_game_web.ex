@@ -1,12 +1,12 @@
-defmodule HangmanWeb do
+defmodule MemoryGameWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use HangmanWeb, :controller
-      use HangmanWeb, :view
+      use MemoryGameWeb, :controller
+      use MemoryGameWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,17 +19,17 @@ defmodule HangmanWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: HangmanWeb
+      use Phoenix.Controller, namespace: MemoryGameWeb
       import Plug.Conn
-      import HangmanWeb.Router.Helpers
-      import HangmanWeb.Gettext
+      import MemoryGameWeb.Router.Helpers
+      import MemoryGameWeb.Gettext
     end
   end
 
   def view do
     quote do
       use Phoenix.View, root: "lib/hangman_web/templates",
-                        namespace: HangmanWeb
+                        namespace: MemoryGameWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
@@ -37,9 +37,9 @@ defmodule HangmanWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import HangmanWeb.Router.Helpers
-      import HangmanWeb.ErrorHelpers
-      import HangmanWeb.Gettext
+      import MemoryGameWeb.Router.Helpers
+      import MemoryGameWeb.ErrorHelpers
+      import MemoryGameWeb.Gettext
     end
   end
 
@@ -54,7 +54,7 @@ defmodule HangmanWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import HangmanWeb.Gettext
+      import MemoryGameWeb.Gettext
     end
   end
 

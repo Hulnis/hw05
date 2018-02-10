@@ -1,3 +1,3 @@
-defmodule HangmanWeb.PageViewTest do
-  use HangmanWeb.ConnCase, async: true
+defmodule MemoryGameWeb.PageViewTest do
+  use MemoryGameWeb.ConnCase, async: true
 end

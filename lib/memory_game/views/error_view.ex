@@ -1,5 +1,5 @@
-defmodule HangmanWeb.ErrorView do
-  use HangmanWeb, :view
+defmodule MemoryGameWeb.ErrorView do
+  use MemoryGameWeb, :view
 
   def render("404.html", _assigns) do
     "Page not found"

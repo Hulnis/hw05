@@ -1,7 +1,7 @@
-defmodule HangmanWeb.GamesChannelTest do
-  use HangmanWeb.ChannelCase
+defmodule MemoryGameWeb.GamesChannelTest do
+  use MemoryGameWeb.ChannelCase
 
-  alias HangmanWeb.GamesChannel
+  alias MemoryGameWeb.GamesChannel
 
   setup do
     {:ok, _, socket} =

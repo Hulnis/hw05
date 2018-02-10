@@ -1,5 +1,5 @@
-defmodule HangmanWeb.Router do
-  use HangmanWeb, :router
+defmodule MemoryGameWeb.Router do
+  use MemoryGameWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,7 +13,7 @@ defmodule HangmanWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", HangmanWeb do
+  scope "/", MemoryGameWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
@@ -21,7 +21,7 @@ defmodule HangmanWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", HangmanWeb do
+  # scope "/api", MemoryGameWeb do
   #   pipe_through :api
   # end
 end

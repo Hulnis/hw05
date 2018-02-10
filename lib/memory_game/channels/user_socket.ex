@@ -1,9 +1,9 @@
-defmodule HangmanWeb.UserSocket do
+defmodule MemoryGameWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", HangmanWeb.RoomChannel
-  channel "games:*", HangmanWeb.GamesChannel
+  # channel "room:*", MemoryGameWeb.RoomChannel
+  channel "games:*", MemoryGameWeb.GamesChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -31,7 +31,7 @@ defmodule HangmanWeb.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     HangmanWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
+  #     MemoryGameWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil

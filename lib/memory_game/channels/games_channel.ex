@@ -1,5 +1,5 @@
-defmodule HangmanWeb.GamesChannel do
-  use HangmanWeb, :channel
+defmodule MemoryGameWeb.GamesChannel do
+  use MemoryGameWeb, :channel
 
   alias Hangman.Game
 

@@ -1,4 +1,4 @@
-defmodule Hangman do
+defmodule MemoryGame do
   @moduledoc """
   Hangman keeps the contexts that define your domain
   and business logic.

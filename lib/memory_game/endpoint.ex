@@ -1,7 +1,7 @@
-defmodule HangmanWeb.Endpoint do
+defmodule MemoryGameWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :hangman
 
-  socket "/socket", HangmanWeb.UserSocket
+  socket "/socket", MemoryGameWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,7 +38,7 @@ defmodule HangmanWeb.Endpoint do
     key: "_hangman_key",
     signing_salt: "CU/JxZCE"
 
-  plug HangmanWeb.Router
+  plug MemoryGameWeb.Router
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

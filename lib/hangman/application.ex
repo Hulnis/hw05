@@ -1,4 +1,4 @@
-defmodule Hangman.Application do
+defmodule MemoryGame.Application do
   use Application
 
   # See https://hexdocs.pm/elixir/Application.html
@@ -9,22 +9,22 @@ defmodule Hangman.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
-      supervisor(HangmanWeb.Endpoint, []),
-      # Start your own worker by calling: Hangman.Worker.start_link(arg1, arg2, arg3)
-      # worker(Hangman.Worker, [arg1, arg2, arg3]),
-      worker(Hangman.GameBackup, []),
+      supervisor(MemoryGameWeb.Endpoint, []),
+      # Start your own worker by calling: MemoryGame.Worker.start_link(arg1, arg2, arg3)
+      # worker(MemoryGame.Worker, [arg1, arg2, arg3]),
+      worker(MemoryGame.GameBackup, []),
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Hangman.Supervisor]
+    opts = [strategy: :one_for_one, name: MemoryGame.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    HangmanWeb.Endpoint.config_change(changed, removed)
+    MemoryGameWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end
