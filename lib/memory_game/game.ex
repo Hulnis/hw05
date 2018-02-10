@@ -68,7 +68,7 @@ defmodule MemoryGame.Game do
     IO.puts("game1")
     IO.inspect(game)
     game = if oneClicked do
-      if card.key === clickedCard1.key do
+      if card.value === clickedCard1.value do
         new_card1 = %{
           :value => card.value,
           :state => "solved",
