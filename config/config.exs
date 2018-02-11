@@ -8,7 +8,7 @@ use Mix.Config
 # Configures the endpoint
 config :memory_game, MemoryGameWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "9C/J32cAtdpBZcOPDkPgRBhArnDpMGPCAbN0u5XBuKJlS8J2i/aqXtnI6wj68YC6",
+  secret_key_base: "j8IwAk7KYm0ziqjKbGIo8HStqaqLnHJhIO2Dygb0enSQWIg3gHRfBLYsYQRrgs4q",
   render_errors: [view: MemoryGameWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: MemoryGame.PubSub,
            adapter: Phoenix.PubSub.PG2]
