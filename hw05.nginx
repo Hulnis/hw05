@@ -3,7 +3,8 @@ map $http_upgrade $connection_upgrade {
   ''      close;
 }
 server{
-  listen 80;
+	listen 80;
+	listen [::]:80;
   server_name hw05.webdevnumber1.com;
 
   location / {
